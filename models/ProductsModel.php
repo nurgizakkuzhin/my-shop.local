@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * Модель для таблицы продукции (products)
+ */
+
+/**
+ * Получаем последние добавленные товары
+ *
+ * @param integer $limit Лимит товаров
+ * @return array Массив товаров
+ */
+function getLastProducts($limit)
+{
+    $sql = 'SELECT * FROM products ORDER BY id DESC';
+
+    if ($limit) {
+        $sql .= ' LIMIT ' . $limit;
+    }
+
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return createSmartyRsArray($rs);
+}
+
+/**
+ * Поулчить продукты для категории $itemId
+ *
+ * @param integer$itemId ID категории
+ * @return array|bool массив продуктов
+ */
+function getProductsByCat($itemId)
+{
+    $itemId = intval($itemId);
+    $sql = 'SELECT * FROM products WHERE category_id = ' . $itemId;
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return createSmartyRsArray($rs);
+}
+
+/**
+ * Получить данные продукта по ID
+ *
+ * @param integer $itemId ID продукта
+ * @return array массив данных продукта
+ */
+function getProductById($itemId)
+{
+    $itemId = intval($itemId); //оптимизация. формирует значение int
+    $sql = 'SELECT * FROM products WHERE id = ' . $itemId;
+
+    $rs = mysqli_query(dbConnect(), $sql);
+    return mysqli_fetch_assoc($rs);
+}
+
+/**
+ * Получить список продуктов из массива идентификаторов (ID's)
+ *
+ * @param array $itemsIds массив идентификаторов продуктов
+ * @return array|bool|null массив данных продуктов
+ */
+function getProductsFromArray($itemsIds)
+{
+    if (!$itemsIds) {
+        return null;
+    }
+    $sql = 'SELECT * FROM products WHERE id IN (' . implode(', ', $itemsIds) . ')';
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return createSmartyRsArray($rs);
+}
