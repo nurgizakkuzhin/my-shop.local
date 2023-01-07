@@ -17,18 +17,20 @@
  */
 function registerNewUser($email, $pwdMD5, $name, $phone, $adress)
 {
-    $email = htmlspecialchars(mysqli_real_escape_string($email));
-    $name = htmlspecialchars(mysqli_real_escape_string($name));
-    $adress = htmlspecialchars(mysqli_real_escape_string($adress));
-    $phone = htmlspecialchars(mysqli_real_escape_string($phone));
+    $email = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $email));
+    $name = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $name));
+    $adress = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $adress));
+    $phone = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $phone));
 
-    $sql = "INSERT INTO users (`email`, `pwd`, `name`, `phone`, `adress`) 
+    $sql = "INSERT INTO users 
+            (`email`, `pwd`, `name`, `phone`, `adress`) 
             VALUES ('{$email}', '{$pwdMD5}', '{$name}', '{$phone}', '{$adress}')";
 
     $rs = mysqli_query(dbConnect(), $sql);
 
     if ($rs) {
-        $sql = "SELECT * FROM users WHERE (`email` = '{$email}' and `pwd` = '{$pwdMD5}') LIMIT 1";
+        $sql = "SELECT * FROM users 
+                WHERE (`email` = '{$email}' and `pwd` = '{$pwdMD5}') LIMIT 1";
 
         $rs = mysqli_query(dbConnect(), $sql);
         $rs = createSmartyRsArray($rs);
@@ -38,9 +40,64 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $adress)
         } else {
             $rs['success'] = 0;
         }
+
     } else {
         $rs['success'] = 0;
     }
+
+    return $rs;
+}
+
+/**
+ * Проверка параметров для регистрации пользователя
+ *
+ *
+ * @param string $email email
+ * @param string $pwd1 пароль
+ * @param string $pwd2 повтор пароля
+ *
+ * @return array результат
+ */
+function checkRegisterParams($email, $pwd1, $pwd2)
+{
+    $res = null;
+
+    if (!$email) {
+        $res['success'] = false;
+        $res['message'] = 'Введите email';
+    }
+
+    if (!$pwd1) {
+        $res['success'] = false;
+        $res['message'] = 'Введите пароль';
+    }
+
+    if (!$pwd2) {
+        $res['success'] = false;
+        $res['message'] = 'Введите повтор пароля';
+    }
+
+    if ($pwd1 != $pwd2) {
+        $res['success'] = false;
+        $res['message'] = 'Пароли не совпадают';
+    }
+
+    return $res;
+}
+
+/**
+ * Проверка почты (есть ли email адрес в БД)
+ *
+ * @param string $email
+ * $return array массив - строка из таблицы users, либо пустой массив
+ */
+function checkUserEmail($email)
+{
+    $email = mysqli_real_escape_string(dbConnect(), $email);
+    $sql = "SELECT id FROM users WHERE email = '{$email}'";
+
+    $rs = mysqli_query(dbConnect(), $sql);
+    $rs = createSmartyRsArray($rs);
 
     return $rs;
 }
