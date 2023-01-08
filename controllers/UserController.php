@@ -60,3 +60,48 @@ function registerAction() {
     echo json_encode($resData);
 
 }
+
+/**
+ * Разлогинивание пользователя
+ */
+function logoutAction()
+{
+    if (isset($_SESSION['user'])) {
+        unset($_SESSION['user']);
+        unset($_SESSION['cart']);
+    }
+    redirect('/');
+}
+
+/**
+ * AJAX авторизация пользователя
+ *
+ * @return json массив данных пользователя
+ */
+function loginAction()
+{
+    $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : null;
+    $email = trim($email);
+
+    $pwd = isset($_REQUEST['pwd']) ? $_REQUEST['pwd'] : null;
+    $pwd = trim($pwd);
+
+    $userData = loginUser($email, $pwd); //[0 => [data], 'success' => [true/false]]
+
+    if ($userData['success']) {
+        $userData = $userData[0];
+
+        $_SESSION['user'] = $userData;
+        $_SESSION['user']['displayName'] = $userData['name'] ? $userData['name'] : $userData['email']; //Если у
+        // пользователя есть имя берем его, иначе его емайл
+
+        $resData = $_SESSION['user'];
+        $resData['success'] = 1;
+
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Неверный логин или пароль';
+    }
+
+    echo json_encode($resData);
+}

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-06 14:46:51
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-09 00:19:19
          compiled from "D:\OSPanel\domains\my-shop.local\config/../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:105179474663b1b3d9bb5b02-10173043%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e768c5d886cc1144619ea597f53da457f20e80e9' => 
     array (
       0 => 'D:\\OSPanel\\domains\\my-shop.local\\config/../views/default\\leftcolumn.tpl',
-      1 => 1673005521,
+      1 => 1673212758,
       2 => 'file',
     ),
   ),
@@ -51,15 +51,27 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
             <?php } ?>
         </div>
 
+        <div id="userBox" class="hideme">
+            <a href="#" id="userLink"></a><br>
+            <a href="/user/logout" onclick="logout()">Выход</a>
+        </div>
+
+        <div id="loginBox">
+            <div class="menuCaption">Авторизация</div>
+            <input type="text" id="loginEmail" name="loginEmail" value="" placeholder="login-email"><br>
+            <input type="password" id="loginPwd" name="loginPwd" value="" placeholder="password"><br>
+            <input type="button" onclick="login();" value="Войти">
+        </div>
+
         <div id="registerBox">
             <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
             <div id="registerBoxHidden">
                 email: <br>
-                <input type="text" id="email" name="email" value=""><br>
+                <input type="text" id="email" name="email" value="" placeholder="email"><br>
                 пароль: <br>
-                <input type="password" id="pwd1" name="pwd1" value=""><br>
+                <input type="password" id="pwd1" name="pwd1" value="" placeholder="pwd1"><br>
                 повторить пароль: <br>
-                <input type="password" id="pwd2" name="pwd2" value=""><br>
+                <input type="password" id="pwd2" name="pwd2" value="" placeholder="pwd2"><br>
                 <input type="button" onclick="registerNewUser();" value="Зарегистрироваться">
             </div>
         </div>
