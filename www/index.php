@@ -31,10 +31,13 @@ $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'I
  */
 $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 
+//Если в сессии есть данные об авторизованном пользователе, то передаем их в шаблон
+if (isset($_SESSION['user'])) {
+    $smarty->assign('arUser', $_SESSION['user']);
+}
 /**
  * загружаем страницу
  */
-
 $smarty->assign('cartCntItems', count($_SESSION['cart']));
 
 loadPage($smarty, $controllerName, $actionName);

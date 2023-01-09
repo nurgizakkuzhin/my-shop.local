@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-09 00:19:19
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-09 23:08:10
          compiled from "D:\OSPanel\domains\my-shop.local\config/../views/default\leftcolumn.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:105179474663b1b3d9bb5b02-10173043%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e768c5d886cc1144619ea597f53da457f20e80e9' => 
     array (
       0 => 'D:\\OSPanel\\domains\\my-shop.local\\config/../views/default\\leftcolumn.tpl',
-      1 => 1673212758,
+      1 => 1673294863,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'rsCategories' => 0,
     'item' => 0,
     'itemChild' => 0,
+    'arUser' => 0,
     'cartCntItems' => 0,
   ),
   'has_nocache_code' => false,
@@ -51,30 +52,38 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
             <?php } ?>
         </div>
 
-        <div id="userBox" class="hideme">
-            <a href="#" id="userLink"></a><br>
-            <a href="/user/logout" onclick="logout()">Выход</a>
-        </div>
-
-        <div id="loginBox">
-            <div class="menuCaption">Авторизация</div>
-            <input type="text" id="loginEmail" name="loginEmail" value="" placeholder="login-email"><br>
-            <input type="password" id="loginPwd" name="loginPwd" value="" placeholder="password"><br>
-            <input type="button" onclick="login();" value="Войти">
-        </div>
-
-        <div id="registerBox">
-            <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
-            <div id="registerBoxHidden">
-                email: <br>
-                <input type="text" id="email" name="email" value="" placeholder="email"><br>
-                пароль: <br>
-                <input type="password" id="pwd1" name="pwd1" value="" placeholder="pwd1"><br>
-                повторить пароль: <br>
-                <input type="password" id="pwd2" name="pwd2" value="" placeholder="pwd2"><br>
-                <input type="button" onclick="registerNewUser();" value="Зарегистрироваться">
+        <?php if (isset($_smarty_tpl->tpl_vars['arUser']->value)){?>
+            <div id="userBox">
+                <a href="/user/" id="userLink"><?php echo $_smarty_tpl->tpl_vars['arUser']->value['displayName'];?>
+</a><br>
+                <a href="/user/logout/" onclick="logout();">Выход</a>
             </div>
-        </div>
+        <?php }else{ ?>
+            <div id="userBox" class="hideme">
+                <a href="#" id="userLink"></a><br>
+                <a href="/user/logout" onclick="logout()">Выход</a>
+            </div>
+
+            <div id="loginBox">
+                <div class="menuCaption">Авторизация</div>
+                <input type="text" id="loginEmail" name="loginEmail" value="" placeholder="login-email"><br>
+                <input type="password" id="loginPwd" name="loginPwd" value="" placeholder="password"><br>
+                <input type="button" onclick="login();" value="Войти">
+            </div>
+
+            <div id="registerBox">
+                <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
+                <div id="registerBoxHidden">
+                    email: <br>
+                    <input type="text" id="email" name="email" value="" placeholder="email"><br>
+                    пароль: <br>
+                    <input type="password" id="pwd1" name="pwd1" value="" placeholder="pwd1"><br>
+                    повторить пароль: <br>
+                    <input type="password" id="pwd2" name="pwd2" value="" placeholder="pwd2"><br>
+                    <input type="button" onclick="registerNewUser();" value="Зарегистрироваться">
+                </div>
+            </div>
+        <?php }?>
 
         <div class="menuCaption">Корзина</div>
         <a href="/cart/" title="Перейти в корзину">В корзине</a>
