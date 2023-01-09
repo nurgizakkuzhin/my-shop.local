@@ -140,5 +140,31 @@ function loginUser($email, $pwd)
  */
 function updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwd)
 {
+    //Проверка входящие данные
+    $email = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $_SESSION['user']['email']));
+    $name = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $name));
+    $phone = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $phone));
+    $adress = htmlspecialchars(mysqli_real_escape_string(dbConnect(), $adress));
+    $pwd1 = trim($pwd1);
+    $pwd2 = trim($pwd2);
 
+    $newPwd = null;
+    if ($pwd1 && ($pwd1 == $pwd2)) {
+        $newPwd = md5($pwd1);
+    }
+
+    $sql = "UPDATE users
+            SET ";
+
+    if ($newPwd) {
+        $sql .= " `pwd` = '{$newPwd}'";
+    }
+
+    $sql .= " `name` = '{$name}', `phone` = '{$phone}', `adress` = '{$adress}' 
+            WHERE `email` = '{$email}' AND `pwd` = '{$curPwd}'
+            LIMIT 1";
+
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return $rs;
 }
