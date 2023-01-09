@@ -126,3 +126,19 @@ function loginUser($email, $pwd)
 
     return $rs;
 }
+
+/**
+ * Изменение данных пользователя
+ *
+ * @param string $name имя пользователя
+ * @param string $phone телефон
+ * @param string $adress адрес
+ * @param string $pwd1 новый пароль
+ * @param string $pwd2 повтор нового пароля
+ * @param string $curPwd текущий пароль
+ * @return boolean true/false в случае успеха или провала
+ */
+function updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwd)
+{
+
+}
