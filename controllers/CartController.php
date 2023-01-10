@@ -81,3 +81,18 @@ function indexAction($smarty)
    loadTemplate($smarty, 'cart');
    loadTemplate($smarty, 'footer');
 }
+
+/**
+ * Формирование страницы заказа
+ */
+function orderAction($smarty)
+{
+    //получаем массив идентификаторов (ID) продуктов корзины
+    $itemsIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : null;
+
+    //если корзина пуста то редиректим в корзину
+    if (! $itemsIds) {
+        redirect('/cart/');
+        return;
+    }
+}
