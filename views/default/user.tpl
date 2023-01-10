@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <td>Для того чтобы сохранить данные, введите текущий пароль</td>
-        <td><input type="password" name="curPwd" value=""></td>
+        <td><input type="password" id="curPwd"  value=""></td>
     </tr>
     <tr>
         <td>&nbsp;</td>

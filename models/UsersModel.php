@@ -157,10 +157,10 @@ function updateUserData($name, $phone, $adress, $pwd1, $pwd2, $curPwd)
             SET ";
 
     if ($newPwd) {
-        $sql .= " `pwd` = '{$newPwd}'";
+        $sql .= "`pwd` = '{$newPwd}', ";
     }
 
-    $sql .= " `name` = '{$name}', `phone` = '{$phone}', `adress` = '{$adress}' 
+    $sql .= "`name` = '{$name}', `phone` = '{$phone}', `adress` = '{$adress}' 
             WHERE `email` = '{$email}' AND `pwd` = '{$curPwd}'
             LIMIT 1";
 

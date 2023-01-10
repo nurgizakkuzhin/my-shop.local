@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-09 23:46:48
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-10 16:00:41
          compiled from "D:\OSPanel\domains\my-shop.local\config/../views/default\user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:168473976363bc7cd3c72236-97318405%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2866db57d45d556c1e784782dcb552ee599e2d6' => 
     array (
       0 => 'D:\\OSPanel\\domains\\my-shop.local\\config/../views/default\\user.tpl',
-      1 => 1673297206,
+      1 => 1673355641,
       2 => 'file',
     ),
   ),
@@ -56,7 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </tr>
     <tr>
         <td>Для того чтобы сохранить данные, введите текущий пароль</td>
-        <td><input type="password" name="curPwd" value=""></td>
+        <td><input type="password" id="curPwd"  value=""></td>
     </tr>
     <tr>
         <td>&nbsp;</td>
