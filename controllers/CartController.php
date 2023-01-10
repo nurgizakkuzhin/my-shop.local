@@ -100,7 +100,7 @@ function orderAction($smarty)
     $itemsCnt = [];
     foreach ($itemsIds as $item) {
         //формируем ключ для массива POST
-        $postVar = 'itemsCnt_' . $item;
+        $postVar = 'itemCnt_' . $item;
         //создаем элемент массива количества покупаемых товаров
         //ключ массива - ID товара, значение массива - количество товара
         //$itemsCnt[1] = 3; товар с ID == 1 покупают 3 штуки

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-10 18:23:57
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-11 01:10:31
          compiled from "D:\OSPanel\domains\my-shop.local\config/../views/default\cart.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:44166866563bd72f5544913-96124119%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02dfcb75b0111a83a68c7d1ae7e2639cc8148f91' => 
     array (
       0 => 'D:\\OSPanel\\domains\\my-shop.local\\config/../views/default\\cart.tpl',
-      1 => 1673360749,
+      1 => 1673388441,
       2 => 'file',
     ),
   ),
@@ -31,7 +31,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if (!$_smarty_tpl->tpl_vars['rsProducts']->value){?>
     В корзине пусто
 <?php }else{ ?>
-    <form action="/cart/order/" method="POST">
+    <form action="/cart/order/" method="post">
 
             <h2>Данные заказа</h2>
         <table>
@@ -60,7 +60,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 " id="itemCnt_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " value="1"
                                onchange="conversionPrice(<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
-)"></td>
+);"></td>
                     <td>
                         <span id="itemPrice_<?php echo $_smarty_tpl->tpl_vars['item']->value['id'];?>
 " value="<?php echo $_smarty_tpl->tpl_vars['item']->value['price'];?>

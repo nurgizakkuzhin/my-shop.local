@@ -5,7 +5,7 @@
 {if ! $rsProducts}
     В корзине пусто
 {else}
-    <form action="/cart/order/" method="POST">
+    <form action="/cart/order/" method="post">
 
             <h2>Данные заказа</h2>
         <table>
@@ -22,7 +22,7 @@
                     <td>{$smarty.foreach.products.iteration}</td>
                     <td><a href="/product/{$item['id']}/">{$item['name']}</a></td>
                     <td><input type="text" name="itemCnt_{$item['id']}" id="itemCnt_{$item['id']}" value="1"
-                               onchange="conversionPrice({$item['id']})"></td>
+                               onchange="conversionPrice({$item['id']});"></td>
                     <td>
                         <span id="itemPrice_{$item['id']}" value="{$item['price']}">{$item['price']}</span>
                     </td>
