@@ -151,4 +151,5 @@ function orderAction($smarty)
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'order');
     loadTemplate($smarty, 'footer');
+
 }
