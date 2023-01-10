@@ -66,6 +66,18 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `purchase`
+--
+
+CREATE TABLE IF NOT EXISTS `purchase` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `price` float NOT NULL,
+  `amount` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+--
 -- Структура таблицы `products`
 --
 
