@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2023-01-01 19:25:02
+<?php /* Smarty version Smarty-3.1.6, created on 2023-01-10 18:24:01
          compiled from "D:\OSPanel\domains\my-shop.local\config/../views/default\product.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:188582173063b1b3de438ba4-85579124%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a4ca937437e01e1fa0253d066ffc1eed4a14eaf6' => 
     array (
       0 => 'D:\\OSPanel\\domains\\my-shop.local\\config/../views/default\\product.tpl',
-      1 => 1672192806,
+      1 => 1672660259,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.6',
+  'unifunc' => 'content_63b1b3de4c55c',
   'variables' => 
   array (
     'rsProduct' => 0,
     'itemInCart' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.6',
-  'unifunc' => 'content_63b1b3de4c55c',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_63b1b3de4c55c')) {function content_63b1b3de4c55c($_smarty_tpl) {?>
 <h3><?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['name'];?>
