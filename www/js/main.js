@@ -100,12 +100,12 @@ function registerNewUser()
                 $('#userLink').html(data['userName']);
                 $('#userBox').show();
                 //<
-/*
+
                 //> страница заказа
-                $('loginBox').hide();
-                $('btnSaveOrder').show();
+                //$('loginBox').hide();
+                //$('btnSaveOrder').show();
                 //<
-                */
+
             } else {
                 alert(data['message']);
             }
@@ -139,6 +139,8 @@ function login()
                 $('#userLink').attr('href', '/user/');
                 $('#userLink').html(data['displayName']);
                 $('#userBox').show();
+
+                $('#btnSaveOrder').show();
             } else {
                 alert(data['message']);
             }
