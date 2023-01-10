@@ -146,7 +146,9 @@ function login()
     });
 }
 
-
+/**
+ * Показывать или прятать форму регистрации
+ */
 function showRegisterBox()
 {
     if ( $("#registerBoxHidden").css('display') != 'block') {
@@ -154,4 +156,27 @@ function showRegisterBox()
     } else {
         $("#registerBoxHidden").hide();
     }
+}
+
+/**
+ * Обновление данных пользователя
+ */
+function updateUserData()
+{
+    console.log("js - updateUserData");
+    var phone = $('#newPhone').val();
+    var adress = $('#newAdress').val();
+    var pwd1 = $('#newPwd1').val();
+    var pwd2 = $('#newPwd2').val();
+    var curPwd = $('#curPwd').val();
+    var name = $('#newName').val();
+
+    var postData = {
+        phone: phone,
+        adress: adress,
+        pwd1: pwd1,
+        pwd2: pwd2,
+        curPwd: curPwd,
+        name: name
+    };
 }
