@@ -7,6 +7,8 @@
 //подключаем модели
 include_once __DIR__ . '/../models/CategoriesModel.php';
 include_once __DIR__ . '/../models/ProductsModel.php';
+include_once __DIR__ . '/../models/PurchaseModel.php';
+include_once __DIR__ . '/../models/OrdersModel.php';
 
 /**
  * Добавление продукта в корзину
@@ -152,4 +154,28 @@ function orderAction($smarty)
     loadTemplate($smarty, 'order');
     loadTemplate($smarty, 'footer');
 
+}
+
+/**
+ * AJAX функция сохранение заказа
+ *
+ * @param array $_SESSION['saleCart'] массив покупаемых продуктов
+ * @return json информация о результате выполнения
+ */
+function saveorderAction()
+{
+    //получаем массив покупаемых товаров
+    $cart = isset($_SESSION['saleCart']) ? $_SESSION['saleCart'] : null;
+
+    //если корзина пуста, то формируем ответ с ошибкой, отдаем его в формате json и выходи из функции
+    if (! $cart) {
+        $resData['success'] = 0;
+        $resData['message'] = 'Нет товаров для заказа';
+        echo json_encode($resData);
+        return;
+    }
+
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $adress = $_POST['adress'];
 }
