@@ -122,6 +122,9 @@ function indexAction($smarty)
     //Получаем список категорий для меню
     $rsCategories = getAllMainCatsWithChildren();
 
+    // получение список заказов пользователя
+    $rsUserOrders = getCurUserOrders();
+
     $smarty->assign('pageTitle', 'Страница пользователя');
     $smarty->assign('rsCategories', $rsCategories);
 

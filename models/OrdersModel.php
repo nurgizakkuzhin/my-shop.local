@@ -49,3 +49,24 @@ function makeNewOrder($name, $phone, $adress)
 
     return  false;
 }
+
+/**
+ *  Получить список заказов с привязкой к продуктам для пользователя $userId
+ *
+ * @param integer $userId ID пользователя
+ * @return array массив заказов с привязкой к продуктам
+ */
+function getOrdersWithProductsByUser($userId)
+{
+    $userId = intval($userId);
+    $sql = "SELECT * FROM orders WHERE `user_id` = '{$userId}' ORDER BY id DESC";
+
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    $smartyRs = [];
+    while ($row = mysqli_fetch_assoc($rs)) {
+        $smartyRs[] = $row;
+    }
+
+    return $smartyRs;
+}
