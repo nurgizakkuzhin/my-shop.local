@@ -5,8 +5,9 @@
  */
 //> Подключаем модели
 include_once __DIR__ . '/../models/CategoriesModel.php';
-//include_once __DIR__ . '/../models/OrdersModel.php';
 include_once __DIR__ . '/../models/UsersModel.php';
+include_once __DIR__ . '/../models/OrdersModel.php';
+include_once __DIR__ . '/../models/PurchaseModel.php';
 //<
 
 /**
@@ -127,6 +128,7 @@ function indexAction($smarty)
 
     $smarty->assign('pageTitle', 'Страница пользователя');
     $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
 
 
     loadTemplate($smarty, 'header');
