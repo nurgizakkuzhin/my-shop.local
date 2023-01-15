@@ -59,3 +59,17 @@ function getCatById($catId)
     return mysqli_fetch_assoc($rs);
 
 }
+
+/**
+ * Получить все главные категории (категорий которые не являются дочерними)
+ *
+ * @return array массив категорий
+ */
+function getAllMainCategories()
+{
+    $sql = 'SELECT * FROM categories WHERE parent_id = 0';
+
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return createSmartyRsArray($rs);
+}

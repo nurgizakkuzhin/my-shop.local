@@ -20,6 +20,9 @@ $smarty->assign('templateWebPath', TemplateAdminWebPath);
  */
 function indexAction($smarty)
 {
+    $rsCategories = getAllMainCategories();
+
+    $smarty->assign('rsCategories', $rsCategories);
     $smarty->assign('pageTitle', 'Управление сайтом');
 
     loadTemplate($smarty, 'adminHeader');
