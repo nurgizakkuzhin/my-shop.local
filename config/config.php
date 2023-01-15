@@ -10,13 +10,16 @@ define('PathPostfix', 'Controller.php');
 
 //> Используем шаблон
 $template = 'default';
+$templateAdmin = 'admin';
 
 // пути к файлам шаблонов (*.tpl)
 define('TemplatePrefix', __DIR__ . '/../views/' . $template . '/');
+define('TemplateAdminPrefix', __DIR__ . '/../views/' . $templateAdmin . '/');
 define('TemplatePostfix', '.tpl');
 
 // пути к файлам шаблонов в вебпространстве
 define('TemplateWebPath', '/templates/' . $template . '/');
+define('TemplateAdminWebPath', '/templates/' . $templateAdmin . '/');
 //<
 
 //> Инициализация шаблонизатора Smarty
