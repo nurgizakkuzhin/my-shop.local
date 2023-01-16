@@ -73,3 +73,25 @@ function getAllMainCategories()
 
     return createSmartyRsArray($rs);
 }
+
+/**
+ * Добавление новой категории
+ *
+ * @param string $catName Название категории
+ * @param integer $catParentId ID родительской категории
+ * @return integer id новой категории
+ */
+function insertCat($catName, $catParentId = 0)
+{
+    //готовим запрос
+    $sql = "INSERT INTO `categories` 
+            (`parent_id`, `name`)
+            VALUES ('{$catParentId}', '{$catName}')";
+
+    //выполняем запрос
+    mysqli_query(dbConnect(), $sql);
+
+    // получаем id добавленной записи
+    $id = mysqli_insert_id(dbConnect());
+    return $id;
+}
