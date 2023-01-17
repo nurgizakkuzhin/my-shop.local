@@ -83,15 +83,16 @@ function getAllMainCategories()
  */
 function insertCat($catName, $catParentId = 0)
 {
+    $catName = mysqli_real_escape_string(dbConnect(), $catName);
+    $catParentId = mysqli_real_escape_string(dbConnect(), $catParentId);
+
     //готовим запрос
-    $sql = "INSERT INTO `categories` 
-            (`parent_id`, `name`)
-            VALUES ('{$catParentId}', '{$catName}')";
+    $sql = "INSERT INTO `categories` (`parent_id`, `name`) VALUES ('{$catParentId}', '{$catName}')";
 
     //выполняем запрос
-    mysqli_query(dbConnect(), $sql);
+    $rs = mysqli_query(dbConnect(), $sql);
 
     // получаем id добавленной записи
     $id = mysqli_insert_id(dbConnect());
-    return $id;
+    return $sql;
 }

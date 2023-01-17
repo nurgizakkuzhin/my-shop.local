@@ -36,6 +36,7 @@ function addnewcatAction()
     $catParentId = $_POST['generalCatId'];
 
     $res = insertCat($catName, $catParentId);
+
     if ($res) {
         $resData['success'] = 1;
         $resData['message'] = 'Категория добавлена';
@@ -44,6 +45,6 @@ function addnewcatAction()
         $resData['message'] = 'Ошибка добавления категории';
     }
 
-    echo json_encode($resData);
+    echo json_encode($res);
     return;
 }
