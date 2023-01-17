@@ -87,12 +87,12 @@ function insertCat($catName, $catParentId = 0)
     $catParentId = mysqli_real_escape_string(dbConnect(), $catParentId);
 
     //готовим запрос
-    $sql = "INSERT INTO `categories` (`parent_id`, `name`) VALUES ('{$catParentId}', '{$catName}')";
+    $sql = "INSERT INTO categories (`parent_id`, `name`) VALUES ('{$catParentId}', '{$catName}')";
 
     //выполняем запрос
     $rs = mysqli_query(dbConnect(), $sql);
 
     // получаем id добавленной записи
-    $id = mysqli_insert_id(dbConnect());
-    return $sql;
+    mysqli_insert_id(dbConnect());
+    return $rs;
 }

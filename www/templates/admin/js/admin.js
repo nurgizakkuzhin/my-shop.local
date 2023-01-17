@@ -22,7 +22,7 @@ function newCategory()
 
     $.ajax({
         type: 'POST',
-        async: false,
+        async: true,
         url: "/admin/addnewcat/",
         data: postData,
         dataType: 'json',

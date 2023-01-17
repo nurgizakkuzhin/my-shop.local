@@ -45,6 +45,6 @@ function addnewcatAction()
         $resData['message'] = 'Ошибка добавления категории';
     }
 
-    echo json_encode($res);
+    echo json_encode($resData);
     return;
 }
