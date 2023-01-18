@@ -48,3 +48,22 @@ function addnewcatAction()
     echo json_encode($resData);
     return;
 }
+
+/**
+ * Страница управления категориями
+ *
+ * @param object $smarty
+ */
+function categoryACtion($smarty)
+{
+    $rsCategories = getAllCategories();
+    $rsMainCategories = getAllMainCategories();
+
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsMainCategories', $rsMainCategories);
+    $smarty->assign('pageTitle', 'Управление сайтом');
+
+    loadTemplate($smarty, 'adminHeader');
+    loadTemplate($smarty, 'adminCategory');
+    loadTemplate($smarty, 'adminFooter');
+}
