@@ -96,3 +96,16 @@ function insertCat($catName, $catParentId = 0)
     mysqli_insert_id(dbConnect());
     return $rs;
 }
+
+/**
+ * Получить все категорий
+ *
+ * @return array массив категорий
+ */
+function getAllCategories()
+{
+    $sql = "SELECT * FROM `categories` ORDER BY parent_id ASC";
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return createSmartyRsArray($rs);
+}
