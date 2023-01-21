@@ -54,7 +54,7 @@ function addnewcatAction()
  *
  * @param object $smarty
  */
-function categoryACtion($smarty)
+function categoryAction($smarty)
 {
     $rsCategories = getAllCategories();
     $rsMainCategories = getAllMainCategories();

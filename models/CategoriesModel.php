@@ -104,7 +104,7 @@ function insertCat($catName, $catParentId = 0)
  */
 function getAllCategories()
 {
-    $sql = "SELECT * FROM `categories` ORDER BY parent_id ASC";
+    $sql = "SELECT * FROM categories ORDER BY parent_id ASC";
     $rs = mysqli_query(dbConnect(), $sql);
 
     return createSmartyRsArray($rs);
