@@ -36,3 +36,21 @@ function newCategory()
         }
     });
 }
+
+function updateCat(itemId)
+{
+    var parentId = $('#parentId_' + itemId).val();
+    var newName = $('#itemName_' + itemId).val();
+    var postData = {itemId: itemId, parentId: parentId, newName: newName};
+
+    $.ajax({
+        type: 'POST',
+        async: false,
+        url: "/admin/updatecategory/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            alert(data['message']);
+        }
+    });
+}

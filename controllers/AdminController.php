@@ -67,3 +67,23 @@ function categoryAction($smarty)
     loadTemplate($smarty, 'adminCategory');
     loadTemplate($smarty, 'adminFooter');
 }
+
+function updatecategoryAction()
+{
+    $itemId = $_POST['itemId'];
+    $parentId = $_POST['parentId'];
+    $newName = $_POST['newName'];
+
+    $res = updateCategoryData($itemId, $parentId, $newName);
+
+    if ($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'Категория обновлена';
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Ошибка изменения данных категории';
+    }
+
+    echo json_encode($resData);
+    return;
+}

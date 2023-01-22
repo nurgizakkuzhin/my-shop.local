@@ -12,7 +12,7 @@
                 <td>{$smarty.foreach.categories.iteration}</td>
                 <td>{$item['id']}</td>
                 <td>
-                    <input type="text" id="itemName_{$item['id']}" value="{$item['name']}">
+                    <input type="text" name="edit" id="itemName_{$item['id']}" value="{$item['name']}">
                 </td>
                 <td>
                     <select id="parentId_{$item['id']}">

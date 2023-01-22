@@ -109,3 +109,31 @@ function getAllCategories()
 
     return createSmartyRsArray($rs);
 }
+
+/**
+ * Обновление категории
+ *
+ * @param integer $itemId ID категории
+ * @param integer $parentId ID главной категории
+ * @param string $newName новое имя категории
+ * @return type
+ */
+function updateCategoryData($itemId, $parentId = -1, $newName = '')
+{
+    $set = [];
+    if ($newName) {
+        $set[] = "`name` = '{$newName}'";
+    }
+
+    if ($parentId > -1) {
+        $set[] = "`parent_id` = '{$parentId}'";
+    }
+
+    $setStr = implode(", ", $set);
+    $sql = "UPDATE categories SET {$setStr} WHERE id = '{$itemId}'";
+
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return $rs;
+
+}
