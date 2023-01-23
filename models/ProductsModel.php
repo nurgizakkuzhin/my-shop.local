@@ -69,3 +69,16 @@ function getProductsFromArray($itemsIds)
 
     return createSmartyRsArray($rs);
 }
+
+/**
+ * Выбрать все продукты из Б
+ * @return array|bool
+ */
+function getProducts()
+{
+    $sql = "SELECT * FROM `products` ORDER BY category_id";
+    $rs = mysqli_query(dbConnect(), $sql);
+
+    return createSmartyRsArray($rs);
+
+}
