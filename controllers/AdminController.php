@@ -87,3 +87,19 @@ function updatecategoryAction()
     echo json_encode($resData);
     return;
 }
+
+function productsAction($smarty)
+{
+    $rsCategories = getAllCategories();
+    $rsProducts = getProducts();
+
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsProducts', $rsProducts);
+
+    $smarty->assign('pageTitle', 'Управление сайтом');
+
+    loadTemplate($smarty, 'adminHeader');
+    loadTemplate($smarty, 'adminProducts');
+    loadTemplate($smarty, 'adminFooter');
+
+}
