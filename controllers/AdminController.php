@@ -103,3 +103,24 @@ function productsAction($smarty)
     loadTemplate($smarty, 'adminFooter');
 
 }
+
+function addproductAction()
+{
+    $itemName = $_POST['itemName'];
+    $itemPrice = $_POST['itemPrice'];
+    $itemDesc = $_POST['itemDesc'];
+    $itemCat = $_POST['itemCatId'];
+
+    $res = insertProduct($itemName, $itemPrice, $itemDesc, $itemCat);
+
+    if ($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'Изменения успешно внесены';
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Ошибка изменения данных';
+    }
+
+    echo json_encode($resData);
+    return;
+}

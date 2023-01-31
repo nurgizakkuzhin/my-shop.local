@@ -82,3 +82,21 @@ function getProducts()
     return createSmartyRsArray($rs);
 
 }
+
+/**
+ * Добавление нового товара
+ *
+ * @param $itemName Название продукта
+ * @param $itemPrice Цена
+ * @param $itemDesc Описание
+ * @param $itemCat ID категории
+ * @return bool|mysqli_result
+ */
+function insertProduct($itemName, $itemPrice, $itemDesc, $itemCat)
+{
+    $sql = "INSERT INTO products SET `name`='{$itemName}', `price`='{$itemPrice}', `description`='{$itemDesc}', `category_id`='{$itemCat}'";
+
+    $rs = mysqli_query(dbConnect(), $sql);
+    return $rs;
+
+}
