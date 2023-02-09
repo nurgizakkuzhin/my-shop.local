@@ -89,4 +89,5 @@
             </td>
         </tr>
     {/foreach}
+
 </table>
