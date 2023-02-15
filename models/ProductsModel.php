@@ -100,3 +100,38 @@ function insertProduct($itemName, $itemPrice, $itemDesc, $itemCat)
     return $rs;
 
 }
+
+function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $itemCat, $newFileName = null)
+{
+    $set = [];
+
+    if ($itemName) {
+        $set[] = "`price` = '{$itemName}'";
+    }
+
+    if ($itemPrice > 0) {
+        $set[] = "`status` = '{$itemStatus}'";
+    }
+
+    if ($itemStatus !== null) {
+        $set[] = "`status` = '{$itemStatus}'";
+    }
+
+    if ($itemDesc) {
+        $set[] = "`description` = '{$itemDesc}'";
+    }
+
+    if ($itemCat) {
+        $set[] = "`category_id` = '{$itemCat}'";
+    }
+
+    if ($newFileName) {
+        $set[] = "`image` = '{$newFileName}'";
+    }
+
+    $setStr = implode(', ', $set);
+    $sql = "UPDATE products SET {$setStr} WHERE id = '{$itemId}'";
+
+    $rs = mysqli_query(dbConnect(), $sql);
+    return $rs;
+}
