@@ -112,8 +112,11 @@ function updateProduct(itemId)
     $.ajax({
         type: 'POST',
         async: false,
-        url: "/admin/updateproduct",
+        url: "/admin/updateproduct/",
         data: postData,
-        dataType: 'json'
-    })
+        dataType: 'json',
+        success: function(data) {
+            alert(data['message']);
+        }
+    });
 }

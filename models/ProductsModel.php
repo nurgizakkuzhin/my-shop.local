@@ -106,11 +106,11 @@ function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $
     $set = [];
 
     if ($itemName) {
-        $set[] = "`price` = '{$itemName}'";
+        $set[] = "`name` = '{$itemName}'";
     }
 
     if ($itemPrice > 0) {
-        $set[] = "`status` = '{$itemStatus}'";
+        $set[] = "`price` = '{$itemPrice}'";
     }
 
     if ($itemStatus !== null) {
